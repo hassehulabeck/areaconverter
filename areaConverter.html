@@ -1,0 +1,32 @@
+<html>
+<script>
+
+  function areaConverter(units, antal) {
+    var enheter = {
+      kvm: 1,
+      fplan: 6850,
+      hektar: 10000,
+      kvkm: 1000000
+    }
+
+    var retur = "";
+
+    for(var enhet in enheter) {
+      if (enhet != units) {
+        let conversion = enheter[units] / enheter[enhet];
+        retur += "<li>" + (conversion * antal) + " " + enhet + "</li>";
+      }
+    }
+    return antal + " " + units + " motsvaras av:<ul>" + retur;
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var show = document.getElementById('show');
+    show.innerHTML = areaConverter("kvm", 1);
+  });
+
+</script>
+<body>
+  <div id="show"></div>
+</body>
+</html>
